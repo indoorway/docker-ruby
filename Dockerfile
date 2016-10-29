@@ -22,7 +22,8 @@ RUN set -ex \
 		ruby \
 	' \
 	&& apt-get update \
-	&& apt-get install -y --no-install-recommends $buildDeps \
+	&& apt-get install -y --no-install-recommends $buildDeps nodejs libgeos-dev libgeos-3.5.0 \
+	&& ln -s /usr/lib/x86_64-linux-gnu/libgeos-3.5.0.so /usr/lib/libgeos.so \
 	&& rm -rf /var/lib/apt/lists/* \
 	\
 	&& wget -O ruby.tar.gz "https://cache.ruby-lang.org/pub/ruby/$RUBY_MAJOR/ruby-$RUBY_VERSION.tar.gz" \
