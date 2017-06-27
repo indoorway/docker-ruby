@@ -20,9 +20,13 @@ RUN set -ex \
 		bison \
 		libgdbm-dev \
 		ruby \
+		ghostscript \
+		nodejs \
+		libgeos-dev \
+		libgeos-3.5.0 \
 	' \
 	&& apt-get update \
-	&& apt-get install -y --no-install-recommends $buildDeps nodejs libgeos-dev libgeos-3.5.0 \
+	&& apt-get install -y --no-install-recommends $buildDeps \
 	&& ln -s /usr/lib/x86_64-linux-gnu/libgeos-3.5.0.so /usr/lib/libgeos.so \
 	&& rm -rf /var/lib/apt/lists/* \
 	\
