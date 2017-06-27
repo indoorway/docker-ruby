@@ -21,13 +21,9 @@ RUN set -ex \
 		dpkg-dev \
 		libgdbm-dev \
 		ruby \
-		ghostscript \
-		nodejs \
-		libgeos-dev \
-		libgeos-3.5.1 \
 	' \
 	&& apt-get update \
-	&& apt-get install -y --no-install-recommends $buildDeps \
+	&& apt-get install -y --no-install-recommends $buildDeps ghostscript nodejs libgeos-dev libgeos-3.5.1 \
 	&& ln -s /usr/lib/x86_64-linux-gnu/libgeos-3.5.1.so /usr/lib/libgeos.so \
 	&& rm -rf /var/lib/apt/lists/* \
 	\
