@@ -7,10 +7,10 @@ RUN mkdir -p /usr/local/etc \
 		echo 'update: --no-document'; \
 	} >> /usr/local/etc/gemrc
 
-ENV RUBY_MAJOR 2.2
-ENV RUBY_VERSION 2.2.5
-ENV RUBY_DOWNLOAD_SHA256 30c4b31697a4ca4ea0c8db8ad30cf45e6690a0f09687e5d483c933c03ca335e3
-ENV RUBYGEMS_VERSION 2.6.7
+ENV RUBY_MAJOR 2.4
+ENV RUBY_VERSION 2.4.1
+ENV RUBY_DOWNLOAD_SHA256 4fc8a9992de3e90191de369270ea4b6c1b171b7941743614cc50822ddc1fe654
+ENV RUBYGEMS_VERSION 2.6.12
 
 # some of ruby's build scripts are written in ruby
 #   we purge system ruby later to make sure our final image uses what we just built
@@ -18,6 +18,7 @@ RUN set -ex \
 	\
 	&& buildDeps=' \
 		bison \
+		dpkg-dev \
 		libgdbm-dev \
 		ruby \
 		ghostscript \
@@ -59,7 +60,7 @@ RUN set -ex \
 	\
 	&& gem update --system "$RUBYGEMS_VERSION"
 
-ENV BUNDLER_VERSION 1.13.6
+ENV BUNDLER_VERSION 1.15.1
 
 RUN gem install bundler --version "$BUNDLER_VERSION"
 
